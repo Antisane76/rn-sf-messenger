@@ -2,7 +2,6 @@
 
 #import "RnSfMessenger.h"
 
-
 @implementation RnSfMessenger
 
 RCT_EXPORT_MODULE()
