@@ -71,6 +71,9 @@ class MessagingController: NSObject, ObservableObject {
         CoreFactory.create(withConfig: config).addDelegate(delegate: self)
 
         print("Config created using conversation ID \(conversationID.description).")
+
+        let chatVC = InterfaceViewController(config)
+        self.present(chatVC, animated: true, completion: nil)
     }
 
     /// Sets the debug level to see more logs in the console.
