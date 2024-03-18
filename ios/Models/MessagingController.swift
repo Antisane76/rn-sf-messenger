@@ -26,7 +26,7 @@ class MessagingController: NSObject, ObservableObject {
         // }
 
         // Get a URL for the service API path
-        guard let serviceAPIURL = URL(string: "https://mintbet--pt.sandbox.my.salesforce-scrt.com") else {
+        guard let serviceAPIURL = URL(string: "test") else {
             // TO DO: Handle error
             return
         }
@@ -46,8 +46,8 @@ class MessagingController: NSObject, ObservableObject {
         let userVerificationRequired = false
         // Create a configuration object
         uiConfig = UIConfiguration(serviceAPI: serviceAPIURL,
-                                    organizationId: "00DD10000001YW6",
-                                    developerName: "Mobile",
+                                    organizationId: "test",
+                                    developerName: "test",
                                     userVerificationRequired: userVerificationRequired,
                                     conversationId: conversationID)
         

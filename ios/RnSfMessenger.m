@@ -1,18 +1,13 @@
 // RnSfMessenger.m
 
 #import "RnSfMessenger.h"
-#import <React/RCTViewManager.h>
-#import <MapKit/MapKit.h>
+#import "MessagingController.h"
 
 @implementation RnSfMessenger
 
+@property (nonatomic, strong) MessagingController *controller;
+
 RCT_EXPORT_MODULE(RnSfMessenger)
-
-- (UIView *)view
-{
-  return [[MKMapView alloc] init];
-}
-
 
 RCT_EXPORT_METHOD(sampleMethod:(NSString *)stringArgument numberParameter:(nonnull NSNumber *)numberArgument callback:(RCTResponseSenderBlock)callback)
 {

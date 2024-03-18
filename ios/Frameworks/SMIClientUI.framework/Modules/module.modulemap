@@ -1,0 +1,11 @@
+framework module SMIClientUI {
+  umbrella header "SMIClientUI.h"
+  export *
+
+  module * { export * }
+}
+
+module SMIClientUI.Swift {
+  header "SMIClientUI-Swift.h"
+  requires objc
+}
