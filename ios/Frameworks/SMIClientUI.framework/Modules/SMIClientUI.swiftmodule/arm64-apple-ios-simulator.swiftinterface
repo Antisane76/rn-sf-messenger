@@ -1,0 +1,663 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
+// swift-module-flags: -target arm64-apple-ios14.1-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SMIClientUI
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import Combine
+import CoreLocation
+import DeveloperToolsSupport
+import Foundation
+import LinkPresentation
+import PDFKit
+import PhotosUI
+import SMIClientCore
+@_exported import SMIClientUI
+import SafariServices
+import Swift
+import SwiftUI
+import UIKit
+import UniformTypeIdentifiers
+import _Concurrency
+import _PhotosUI_SwiftUI
+import _StringProcessing
+import _SwiftConcurrencyShims
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 14.1, *)
+@_Concurrency.MainActor(unsafe) final public class ChatLoadingView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+public enum StringManagement {
+  public static func languages() -> [Swift.String]
+}
+@objc @_hasMissingDesignatedInitializers @available(iOS 14.1, *)
+@_Concurrency.MainActor(unsafe) final public class UIViewCheckBox : UIKit.UIView {
+  @objc deinit
+}
+public enum FontToken : Swift.String, Swift.CaseIterable, Swift.Codable {
+  case navBarTitle
+  case body
+  case title
+  case caption
+  case small
+  case smallBold
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [SMIClientUI.FontToken]
+  public typealias RawValue = Swift.String
+  public static var allCases: [SMIClientUI.FontToken] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension SMIClientUI.FontToken : Swift.Identifiable {
+  public var id: Swift.String {
+    get
+  }
+  public typealias ID = Swift.String
+}
+extension SMIClientUI.MessageCollectionViewController {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UIKit.UICollectionView, contextMenuConfigurationForItemAt indexPath: Foundation.IndexPath, point: CoreFoundation.CGPoint) -> UIKit.UIContextMenuConfiguration?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UIKit.UICollectionView, previewForHighlightingContextMenuWithConfiguration configuration: UIKit.UIContextMenuConfiguration) -> UIKit.UITargetedPreview?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UIKit.UICollectionView, previewForDismissingContextMenuWithConfiguration configuration: UIKit.UIContextMenuConfiguration) -> UIKit.UITargetedPreview?
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 14.1, *)
+@_Concurrency.MainActor(unsafe) final public class ChatLoadingViewHeader : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+extension Foundation.IndexPath {
+  public func identifier() -> Swift.String
+}
+@objc @_inheritsConvenienceInitializers @available(iOS 14.1, *)
+@_Concurrency.MainActor(unsafe) public class MessageCollectionViewController : UIKit.UIViewController, UIKit.UICollectionViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLayoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillTransition(to size: CoreFoundation.CGSize, with coordinator: any UIKit.UIViewControllerTransitionCoordinator)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 14.1, *)
+@_Concurrency.MainActor(unsafe) final public class ChatLoadingViewFooter : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+extension UIKit.UIFont {
+  public static func smiBranded(_ token: SMIClientUI.FontToken) -> UIKit.UIFont
+  public static func smiBrandedWeight(_ token: SMIClientUI.FontToken) -> UIKit.UIFont.Weight
+  public static func smiBrandedSize(_ token: SMIClientUI.FontToken) -> CoreFoundation.CGFloat
+}
+extension SwiftUI.Font {
+  public static func smiBranded(_ token: SMIClientUI.FontToken) -> SwiftUI.Font
+  public static func smiBrandedWeight(_ token: SMIClientUI.FontToken) -> SwiftUI.Font.Weight
+  public static func smiBrandedSize(_ token: SMIClientUI.FontToken) -> CoreFoundation.CGFloat
+}
+extension UIKit.UIImage {
+  public static func smiBranded(_ token: SMIClientUI.ImageToken) -> UIKit.UIImage?
+}
+extension SwiftUI.Image {
+  public static func smiBranded(_ token: SMIClientUI.ImageToken) -> SwiftUI.Image?
+}
+extension SMIClientUI.ColorToken : Swift.Identifiable {
+  public var id: Swift.String {
+    get
+  }
+  public typealias ID = Swift.String
+}
+extension UIKit.UIImage {
+  public class func gif(data: Foundation.Data) -> UIKit.UIImage?
+  public class func delayForImageAtIndex(_ index: Swift.Int, source: ImageIO.CGImageSource!) -> Swift.Double
+}
+extension Swift.String {
+  public static func smiLocalized(_ token: SMIClientUI.StringManagement.Localization) -> Swift.String
+  public static func smiAccessible(_ token: SMIClientUI.StringManagement.Accessibility) -> Swift.String
+  public static func smiLocalizedWithFormat(_ token: SMIClientUI.StringManagement.Localization, args: any Swift.CVarArg...) -> Swift.String
+  public static func smiAccessibleWithFormat(_ token: SMIClientUI.StringManagement.Accessibility, args: any Swift.CVarArg...) -> Swift.String
+  public static func smiLanguages() -> [Swift.String]
+}
+extension Swift.String {
+  public func indexPath() -> Foundation.IndexPath?
+}
+@objc @_inheritsConvenienceInitializers @available(iOS 14.1, *)
+@_Concurrency.MainActor(unsafe) final public class ChatLoadingViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@available(iOS 14.1, *)
+public struct Interface : SwiftUI.View {
+  public init(_ config: SMIClientUI.UIConfiguration)
+  @_Concurrency.MainActor(unsafe) public var body: some SwiftUI.View {
+    get
+  }
+  public static var sdkVersion: Swift.String? {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11SMIClientUI9InterfaceV4bodyQrvp", 0) __
+}
+@objc @_hasMissingDesignatedInitializers @available(iOS 14.1, *)
+@_Concurrency.MainActor(unsafe) final public class PreChatViewController : UIKit.UIViewController, UIKit.UITableViewDelegate, UIKit.UITableViewDataSource {
+  public enum Constants {
+  }
+  @_Concurrency.MainActor(unsafe) convenience public init(_ config: SMIClientUI.UIConfiguration?, remoteConfig: any SMIClientCore.RemoteConfiguration, isEditable: Swift.Bool, failedEntry: (any SMIClientCore.ConversationEntry)?)
+  @_Concurrency.MainActor(unsafe) public init(_ config: SMIClientUI.UIConfiguration?, preChatFields: [any SMIClientCore.PreChatField]?, hiddenPreChatFields: [any SMIClientCore.HiddenPreChatField]?, choiceListConfiguration: (any SMIClientCore.ChoiceListConfiguration)?, termsAndConditions: (any SMIClientCore.TermsAndConditions)?, isEditable: Swift.Bool, failedEntry: (any SMIClientCore.ConversationEntry)?)
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewWillTransition(to size: CoreFoundation.CGSize, with coordinator: any UIKit.UIViewControllerTransitionCoordinator)
+  @_Concurrency.MainActor(unsafe) @objc final public func numberOfSections(in tableView: UIKit.UITableView) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc final public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc final public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @_Concurrency.MainActor(unsafe) @objc final public func tableView(_ tableView: UIKit.UITableView, viewForHeaderInSection section: Swift.Int) -> UIKit.UIView?
+  @_Concurrency.MainActor(unsafe) @objc final public func tableView(_ tableView: UIKit.UITableView, viewForFooterInSection section: Swift.Int) -> UIKit.UIView?
+  @_Concurrency.MainActor(unsafe) @objc final public func tableView(_ tableView: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
+}
+public enum ImageToken : Swift.String, Swift.CaseIterable, Swift.Codable {
+  case iconSending
+  case iconSent
+  case iconDelivered
+  case iconRead
+  case iconFailed
+  case iconOffline
+  case iconCheckMark
+  case iconPreChatReceipt
+  case iconImagePlaceholder
+  case actionSend
+  case actionMenu
+  case actionCancel
+  case actionAttachPhoto
+  case actionTakePhoto
+  case actionSelectFile
+  case actionSwitchCamera
+  case actionGallery
+  case actionCapture
+  case actionDismiss
+  case chevronDown
+  case chevronRight
+  case actionJumpTo
+  case actionShare
+  case actionDownload
+  case avatarAgent
+  case avatarBot
+  case avatarUser
+  case actionSearch
+  case noSearchResults
+  case emptyState
+  case backButtonArrow
+  case actionCopy
+  case iconClock
+  case actionParticipantMenu
+  case iconSurvey
+  case iconFormOptionSelected
+  case iconFormCalendar
+  case iconFormFailed
+  case iconForm
+  case iconError
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [SMIClientUI.ImageToken]
+  public typealias RawValue = Swift.String
+  public static var allCases: [SMIClientUI.ImageToken] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+extension SMIClientUI.ImageToken : Swift.Identifiable {
+  public var id: Swift.String {
+    get
+  }
+  public typealias ID = Swift.String
+}
+@objc @_inheritsConvenienceInitializers open class AsynchronousOperation : Foundation.Operation {
+  @objc override dynamic public var isAsynchronous: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public var isExecuting: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public var isFinished: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public func start()
+  public func finish()
+  public enum State : Swift.String {
+    case ready
+    case executing
+    case finished
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public var state: SMIClientUI.AsynchronousOperation.State {
+    get
+    set
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension SMIClientUI.StringManagement {
+  public enum Localization : Swift.String, Swift.CaseIterable, Swift.Codable, Swift.Identifiable {
+    public var id: Swift.String {
+      get
+    }
+    public var identifier: Swift.String {
+      get
+    }
+    case chatFeedTitle
+    case placeholder
+    case send
+    case newMessages
+    case sending
+    case failed
+    case delivered
+    case sent
+    case read
+    case yesterday
+    case today
+    case reconnecting
+    case connected
+    case failedAlertTitle
+    case cameraPermissionAlertTitle
+    case failedAlertMessage
+    case cameraPermissionAlertMessage
+    case alertActionRetry
+    case actionSettings
+    case actionCancel
+    case participantChangedJoined
+    case participantChangedLeft
+    case separator
+    case unknown
+    case preChatRequired
+    case preChatSubmitButton
+    case preChatTitle
+    case preChatErrorFieldRequired
+    case preChatErrorValideEmailFormat
+    case preChatErrorValideNumberFormat
+    case preChatErrorValidatePhoneFormat
+    case actionMenuPhotoSend
+    case actionMenuPhotoTake
+    case actionMenuFileSend
+    case transferRequested
+    case preChatCellText
+    case preChatSubmitedHeader
+    case preChatBackButton
+    case choiceListNoneOption
+    case fileSizeMegabyte
+    case imageShareHeader
+    case gifShareHeader
+    case pdfShareHeader
+    case imageSavedMessage
+    case attachmentSaveFailedMessage
+    case maxAttachmentsReach
+    case photosPermissonDeniedTitle
+    case photosPermissonDeniedmessage
+    case unsupportedAttachment
+    case attachmentTooLarge
+    case unsupportedFileType
+    case routingFailedMessage
+    case routingWaitResolvedMinutes
+    case routingWaitResolvedShort
+    case routingInitialAgent
+    case multipleMessageCounter
+    case noRecentSearchesHeader
+    case noMatchingResultsHeader
+    case noMatchingResultsBody
+    case messageSearchHeader
+    case recentSearchHeader
+    case messageSeachBarPlaceholderText
+    case messageSearchTodayTimestamp
+    case messageSearchYesterdayTimestamp
+    case timestampUsersName
+    case noRecentSearchesBody
+    case actionCopy
+    case copyText
+    case copyAttachment
+    case messageSearchBack
+    case clearSearchTextAccessibility
+    case agentAvatarIconAccessibility
+    case botAvatarIconAccessibility
+    case userAvatarIconAccessibility
+    case outsideOfBusinessHours
+    case participantClientMenuTitle
+    case participantClientMenuTitleAccessibility
+    case startConversationButton
+    case midConvoPreChatErrorMessage
+    case formMessageNextButton
+    case formMessageSubmitButton
+    case formMessageBackButton
+    case termsAndConditionsAccept
+    case termsAndConditionsError
+    case formMessageExitScreenTitle
+    case formMessageExitScreenSubtitle
+    case formMessageExitScreenConfirm
+    case formMessageExitScreenCancel
+    case formMessageNavigationBackButton
+    case formMessageResultSuccess
+    case formMessageResultSubimtting
+    case formMessageResultError
+    case formMessageRequired
+    case formMessageTextInvaidEmail
+    case formMessageTextInvalidUrl
+    case formMessageTextInputRequiredMessage
+    case formMessageOptiopnRequiredMessage
+    case formMessageDivider
+    case unknownEntryMessage
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [SMIClientUI.StringManagement.Localization]
+    public typealias ID = Swift.String
+    public typealias RawValue = Swift.String
+    public static var allCases: [SMIClientUI.StringManagement.Localization] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+public enum ColorToken : Swift.String, Swift.CaseIterable, Swift.Codable {
+  case primary
+  case primaryVariant
+  case onPrimary
+  case secondary
+  case secondaryActive
+  case secondaryHighlight
+  case onSecondary
+  case onSecondaryVariant
+  case surface
+  case surfaceVariant
+  case surfaceSecondary
+  case surfaceHighlight
+  case onSurface
+  case onSurfaceVariant
+  case background
+  case onBackground
+  case onBackgroundSemiTransparent
+  case error
+  case warning
+  case success
+  case transparent
+  case backgroundTransparent
+  case surfaceTransparent
+  case onSecondaryTransparent
+  case onSecondarySemiTransparent
+  case tertiary
+  case highlight
+  case navigationBackground
+  case navigationText
+  case navigationIcon
+  case chatBackground
+  case ctaButtons
+  case ctaButtonsText
+  case urlText
+  case inputBackground
+  case inputBorder
+  case inputText
+  case inputPlaceholder
+  case sentBubbleBackground
+  case sentBubbleText
+  case receivedBubbleBackground
+  case receivedBubbleBorder
+  case receivedBubbleText
+  case avatarBackground
+  case avatarForeground
+  case timestamp
+  case chatSeparator
+  case unknownEntryErrorIconBackground
+  case typingIndicatorText
+  case bannerText
+  case bannerBackground
+  case cardBackground
+  case cardBorder
+  case cardHeadlineText
+  case cardSubheaderText
+  case iconForeground
+  case iconBackground
+  case iconBackgroundSecondary
+  case iconDisabled
+  case iconError
+  case prechatBackground
+  case prechatBorder
+  case prechatText
+  case prechatTextActive
+  case prechatButton
+  case prechatButtonActive
+  case prechatButtonText
+  case prechatInputBackground
+  case prechatError
+  case prechatDisabled
+  case buttonText
+  case buttonBackground
+  case buttonBorder
+  case buttonFocusText
+  case buttonFocusBackground
+  case buttonDisabledText
+  case buttonDisabledBackground
+  case buttonDisabledSelectedText
+  case buttonDisabledSelectedBackground
+  case listPickerTitleText
+  case listPickerTitleBackground
+  case cameraButtonActive
+  case cameraButtonBGActive
+  case cameraButtonFocused
+  case cameraButtonBGFocused
+  case cameraButtonPressed
+  case cameraButtonBGPressed
+  case cancelButtonActive
+  case cancelButtonBGActive
+  case cancelButtonPressed
+  case cancelButtonBGPressed
+  case imageViewerBackground
+  case loadingScreenTextPlaceholder
+  case loadingScreenSentBubbleBackground
+  case loadingScreenReceivedBubbleBackground
+  case loadingScreenAvatar
+  case loadingScreenBackground
+  case loadingScreenInputTextPlaceholder
+  case messageSearchInputBar
+  case messageSearchHighlightBorderAgent
+  case messageSearchHighlightBorderUser
+  case messageSearchHighlightTextUser
+  case messageSearchHighlightTextAgent
+  case messageSearchHighlightBackgroundUser
+  case messageSearchHighlightBackgroundAgent
+  case participantClientMenuBackground
+  case participantClientMenuItemText
+  case participantClientMenuItemBackground
+  case participantClientMenuItemIcon
+  case participantClientMenuSearchIcon
+  case participantClientMenuItemFocusBackground
+  case formSubmitButton
+  case formSubmitButtonText
+  case formNextButton
+  case formNextButtonText
+  case formBackButton
+  case formBackButtonText
+  case formBackground
+  case formTitleText
+  case formSubTitleText
+  case formOptionTitle
+  case formOptionButtonBackground
+  case formOptionButtonText
+  case formOptionButtonBorder
+  case formOptionButtonBorderSelected
+  case formOptionButtonBorderRequired
+  case formOptionTextError
+  case formInputFooterLabel
+  case formInputBorder
+  case formInputBorderActive
+  case formInputBorderError
+  case formInputTitleText
+  case formInputText
+  case formInputBackground
+  case formConfirmationButtonLeave
+  case formConfirmationButtonLeaveText
+  case formConfirmationButtonCancel
+  case formConfirmationButtonCancelText
+  case formConfirmationButtonCancelBorder
+  case formProressBarForeground
+  case formCellIconBackgroundDisabled
+  case formCellIconDisabled
+  case formOptionButtonIcon
+  case formDatePickerIcon
+  case carouselTitleText
+  case carouselSubTitleText
+  case carouselButtonText
+  case carouselButtonTextDisabled
+  case carouselButtonBackground
+  case carouselBackground
+  case carouselProgressIndicatorActive
+  case carouselProgressIndicatorInactive
+  case carouselSelectedHighlight
+  case carouselSelectedIconForeground
+  case carouselSelectedIconBackground
+  case carouselImageBackground
+  public init?(rawValue: Swift.String)
+  public typealias AllCases = [SMIClientUI.ColorToken]
+  public typealias RawValue = Swift.String
+  public static var allCases: [SMIClientUI.ColorToken] {
+    get
+  }
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc @available(iOS 14.1, *)
+public class UIConfiguration : SMIClientCore.Configuration {
+  final public let conversationId: Foundation.UUID
+  final public let createConversationOnSubmit: Swift.Bool
+  public init(serviceAPI: Foundation.URL, organizationId: Swift.String, developerName: Swift.String, userVerificationRequired: Swift.Bool = false, conversationId: Foundation.UUID, createConversationOnSubmit: Swift.Bool = true)
+  public init?(url: Foundation.URL, userVerificationRequired: Swift.Bool = false, conversationId: Foundation.UUID, createConversationOnSubmit: Swift.Bool = true)
+  convenience public init(configuration: SMIClientCore.Configuration, conversationId: Foundation.UUID, createConversationOnSubmit: Swift.Bool = true)
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @available(iOS 14.1, *)
+@_Concurrency.MainActor(unsafe) final public class ChatLoadingViewMessage : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @available(iOS 14.1, *)
+@_Concurrency.MainActor(unsafe) final public class InterfaceViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) public static var sdkVersion: Swift.String?
+  @_Concurrency.MainActor(unsafe) @objc override final public var navigationItem: UIKit.UINavigationItem {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) convenience public init(_ config: SMIClientUI.UIConfiguration)
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewWillDisappear(_ animated: Swift.Bool)
+}
+extension SMIClientUI.InterfaceViewController : SMIClientCore.ConversationClientDelegate {
+  @_Concurrency.MainActor(unsafe) @objc final public func client(_ client: any SMIClientCore.ConversationClient, didCreateConversation conversation: any SMIClientCore.Conversation)
+  @_Concurrency.MainActor(unsafe) @objc final public func client(_ client: any SMIClientCore.ConversationClient, didError error: any Swift.Error)
+}
+public protocol ChatComposableView : UIKit.UIView {
+  func compose()
+}
+public protocol ChatReusableView : UIKit.UIView {
+  func prepareForReuse()
+}
+extension SMIClientUI.StringManagement {
+  public enum Accessibility : Swift.String, Swift.CaseIterable, Swift.Codable, Swift.Identifiable {
+    public var id: Swift.String {
+      get
+    }
+    public var identifier: Swift.String {
+      get
+    }
+    case feedInputText
+    case messageReceived
+    case messageSending
+    case localMessageId
+    case networkReconnecting
+    case networkConnected
+    case typingStart
+    case typingStop
+    case typingIndicator
+    case participantChangedJoined
+    case participantChangedLeft
+    case failed
+    case failedHint
+    case preChatRequired
+    case feedActionMenu
+    case badgeAction
+    case messageReceivedScrolled
+    case loadingScreen
+    case backButtonPrechat
+    case exitButtonPrechat
+    case jumpToPhotoButton
+    case sharePhotoButton
+    case downloadPhotoButton
+    case imageMessage
+    case checkBoxSelected
+    case checkBoxNotSelected
+    case cameraCapturingPhoto
+    case linkPreview
+    case outsideOfBusinessHours
+    case resubmitPreChatAccessibility
+    case formBackButtonAccessibility
+    case formRequiredAccessibility
+    case carouselPlaceholderImage
+    case carouselSelectedIcon
+    case carouselImage
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [SMIClientUI.StringManagement.Accessibility]
+    public typealias ID = Swift.String
+    public typealias RawValue = Swift.String
+    public static var allCases: [SMIClientUI.StringManagement.Accessibility] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+public enum ChatCellOrigin {
+  case local
+  case remote
+  case system
+  public static func == (a: SMIClientUI.ChatCellOrigin, b: SMIClientUI.ChatCellOrigin) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol ChatCollectionViewCell : UIKit.UICollectionViewCell, SMIClientUI.ChatComposableView {
+  static var identifier: Swift.String { get }
+}
+public protocol ChatGroupedCollectionViewCell : UIKit.UICollectionViewCell {
+  var isLastInGroup: Swift.Bool { get set }
+}
+public protocol ModeledCollectionViewCell : UIKit.UICollectionViewCell {
+  var model: (any SMIClientCore.ConversationEntry)? { get }
+}
+public protocol DirectedCollectionViewCell : UIKit.UICollectionViewCell {
+  var origin: SMIClientUI.ChatCellOrigin { get set }
+}
+extension SMIClientUI.FontToken : Swift.Equatable {}
+extension SMIClientUI.FontToken : Swift.Hashable {}
+extension SMIClientUI.FontToken : Swift.RawRepresentable {}
+extension SMIClientUI.ImageToken : Swift.Equatable {}
+extension SMIClientUI.ImageToken : Swift.Hashable {}
+extension SMIClientUI.ImageToken : Swift.RawRepresentable {}
+extension SMIClientUI.ColorToken : Swift.Equatable {}
+extension SMIClientUI.ColorToken : Swift.Hashable {}
+extension SMIClientUI.ColorToken : Swift.RawRepresentable {}
+extension SMIClientUI.AsynchronousOperation.State : Swift.Equatable {}
+extension SMIClientUI.AsynchronousOperation.State : Swift.Hashable {}
+extension SMIClientUI.AsynchronousOperation.State : Swift.RawRepresentable {}
+extension SMIClientUI.StringManagement.Localization : Swift.Equatable {}
+extension SMIClientUI.StringManagement.Localization : Swift.Hashable {}
+extension SMIClientUI.StringManagement.Localization : Swift.RawRepresentable {}
+extension SMIClientUI.StringManagement.Accessibility : Swift.Equatable {}
+extension SMIClientUI.StringManagement.Accessibility : Swift.Hashable {}
+extension SMIClientUI.StringManagement.Accessibility : Swift.RawRepresentable {}
+extension SMIClientUI.ChatCellOrigin : Swift.Equatable {}
+extension SMIClientUI.ChatCellOrigin : Swift.Hashable {}

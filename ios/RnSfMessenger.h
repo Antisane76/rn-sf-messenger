@@ -1,8 +1,9 @@
 // RnSfMessenger.h
 
-#import <React/RCTViewManager.h>
+
+#import "RnSfMessenger-Bridging-Header.h"
 #import <React/RCTBridgeModule.h>
 
-@interface RnSfMessenger : RCTViewManager
+@interface RnSfMessenger : NSObject <RCTBridgeModule>
 
 @end

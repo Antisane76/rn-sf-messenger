@@ -16,16 +16,15 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   # optional - use expanded license entry instead:
   # s.license    = { :type => "MIT", :file => "LICENSE" }
-  s.authors      = { "Your Name" => "yourname@email.com" }
-  s.platforms    = { :ios => "13.0" }
+  s.authors      = { "Tim Gurnett" => "timg@punterstech.com" }
+  s.platforms    = { :ios => "14.1" }
   s.source       = { :git => "https://github.com/Antisane76/rn-sf-messenger.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,c,cc,cpp,m,mm,swift}"
-  s.requires_arc = true
+  #s.requires_arc = true
 
   s.dependency "React"
-  s.dependency "Messaging-InApp-UI"
-  s.ios.vendored_frameworks = 'ios/Frameworks/SMIClientUI.framework', 'ios/Frameworks/SMIClientCore.framework' 
+  s.ios.vendored_frameworks = '**/ios/Frameworks/SMIClientUI.framework', '**/ios/Frameworks/SMIClientCore.framework' 
   # ...
   # s.dependency "..."
 end
