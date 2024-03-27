@@ -8,15 +8,23 @@
 
 RCT_EXPORT_MODULE(RnSfMessenger)
 
-RCT_EXPORT_METHOD(sampleMethod:(NSString *)stringArgument numberParameter:(nonnull NSNumber *)numberArgument callback:(RCTResponseSenderBlock)callback)
+RCT_EXPORT_METHOD(registerDeviceToken:(NSString *)token)
+{
+  // Call the Messaging for In-App SDK with token info
+  [SMICoreFactory provideDeviceToken:token];
+}
+
+RCT_EXPORT_METHOD(initiateChat:(NSString *)url :(NSString *)orgID :(NSString *)devName :(NSString *)uuid :(NSString *)clientID)
 {
      dispatch_async(dispatch_get_main_queue(), ^{
       MessagingController *controller = [[MessagingController alloc] init];
-      [controller resetConfigFor:stringArgument];
+      //NSLog(@"Values: %s %s %s %s %s", url, orgID, devName, uuid, clientID);
+      NSLog(@"Here!");
+      [controller resetConfig: url orgID:orgID devName:devName uuid:uuid clientID:clientID];
       [controller showScreen];
      });
     // TODO: Implement some actually useful functionality
-    callback(@[[NSString stringWithFormat: @"numberArgument: %@ stringArgument: %@", numberArgument, stringArgument]]);
+    //callback(@[[NSString stringWithFormat: @"numberArgument: %@ stringArgument: %@", numberArgument, stringArgument]]);
 }
 
 // RCT_EXPORT_METHOD(sampleMethod:(NSString *)stringArgument numberParameter:(nonnull NSNumber *)numberArgument callback:(RCTResponseSenderBlock)callback)

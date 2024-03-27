@@ -301,7 +301,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 SWIFT_CLASS("MessagingController")
 @interface MessagingController : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-- ()resetConfigFor: (NSString*) uuid;
+- ()resetConfig: (NSString *)url orgID:(NSString*)orgID devName:(NSString*)devName uuid:(NSString *)uuid clientID:(NSString *)clientID;
 - ()showScreen;
 @end
 

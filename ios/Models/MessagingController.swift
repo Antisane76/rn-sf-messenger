@@ -7,6 +7,22 @@ import SMIClientUI
 import SMIClientCore
 import Foundation
 
+extension UIColor {
+
+    convenience init(rgb: UInt) {
+        self.init(rgb: rgb, alpha: 1.0)
+    }
+
+    convenience init(rgb: UInt, alpha: CGFloat) {
+        self.init(
+            red: CGFloat((rgb & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgb & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgb & 0x0000FF) / 255.0,
+            alpha: CGFloat(alpha)
+        )
+    }
+}
+
 /**
  Implementation of the CoreDelegate
  To learn more, see
@@ -24,21 +40,59 @@ extension MessagingController: CoreDelegate {
  To learn more, see
  https://developer.salesforce.com/docs/service/messaging-in-app/guide/ios-pre-chat.html
  */
-extension MessagingController: HiddenPreChatDelegate {
-    // Invoked automatically when hidden pre-chat fields are being sent
-    func core(_ core: CoreClient,
-              conversation: Conversation,
-              didRequestPrechatValues hiddenPreChatFields: [HiddenPreChatField],
-              completionHandler: HiddenPreChatValueCompletion) {
+// extension MessagingController: HiddenPreChatDelegate {
+//     // Invoked automatically when hidden pre-chat fields are being sent
+//     func core(_ core: CoreClient,
+//               conversation: Conversation,
+//               didRequestPrechatValues hiddenPreChatFields: [HiddenPreChatField],
+//               completionHandler: HiddenPreChatValueCompletion) {
 
-        for it in hiddenPreChatFields {
-            switch it.name {
-            case "<YOUR_HIDDEN_FIELD1": it.value = "<YOUR_HIDDEN_VALUE1>"
-            case "<YOUR_HIDDEN_FIELD2>": it.value = "<YOUR_HIDDEN_VALUE2>"
-            default: print("Unknown hidden prechat field: \(it.name)")
-            }
+//         for it in hiddenPreChatFields {
+//             switch it.name {
+//             case "Client_ID": it.value = clientID
+//             default: print("Unknown hidden prechat field: \(it.name)")
+//             }
+//         }
+
+//         completionHandler(hiddenPreChatFields)
+//     }
+// }
+
+class HiddenPrechatDelegateImplementation: HiddenPreChatDelegate {
+
+    @objc
+    @Published var clientID: String
+
+     @objc
+    init() {
+        clientID = "Guest"
+    }
+
+    func setClientID(_ id: String) {
+        NSLog("Setting client ID: %@", id)
+        clientID = id;
+    }
+
+    func core(_ core: CoreClient!,
+                conversation: Conversation!,
+                didRequestPrechatValues hiddenPreChatFields: [HiddenPreChatField]!,
+                completionHandler: HiddenPreChatValueCompletion!) {
+
+        // Use the conversation object to inspect info about the conversation
+        NSLog("CLIENT ID: %@", clientID)
+        // Fill in all the hidden pre-chat fields
+        for preChatField in hiddenPreChatFields {
+            NSLog(preChatField.label)
+            NSLog(preChatField.identifier)
+            NSLog(preChatField.value!)
+        // preChatField.label contains the label
+        // preChatField.identifier contains the conversation identifier
+        // preChatField.value is where you populate the field with a value
+
+        preChatField.value = clientID
         }
 
+        // Pass pre-chat fields back to SDK
         completionHandler(hiddenPreChatFields)
     }
 }
@@ -72,6 +126,7 @@ extension MessagingController: TemplatedUrlDelegate {
  https://developer.salesforce.com/docs/service/messaging-in-app/guide/ios-user-verification.html
  */
 extension MessagingController: UserVerificationDelegate {
+    
     // Invoked automatically when credentials are required for authorizing a verified user
     func core(_ core: CoreClient,
               userVerificationChallengeWith reason: ChallengeReason,
@@ -122,7 +177,7 @@ class MessagingController: NSObject, ObservableObject  {
     @objc
     override init() {
         super.init()
-        self.resetConfig(for: "")
+        //self.resetConfig(for: "")
         self.setDebugLogging()
     }
 
@@ -135,44 +190,46 @@ class MessagingController: NSObject, ObservableObject  {
             .windows.first(where: { $0.isKeyWindow })?
             .rootViewController
         let chatVC = InterfaceViewController(uiConfig!)
+        chatVC.title = "Live Support"
         let navControl = UINavigationController(rootViewController: chatVC)
         navControl.navigationBar.isTranslucent = false
         let navigationItem = chatVC.navigationItem
+        
         // Make the navigation bar's title with red text.
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor.systemRed
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.lightText] // With a red background, make the title more readable.
+        appearance.backgroundColor = UIColor(rgb: 0x004E43)
+        appearance.titleTextAttributes = [.foregroundColor: UIColor(rgb: 0xFFFFFF)] // With a red background, make the title more readable.
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance // For iPhone small navigation bar in landscape.
-
-
+        navigationItem.title = "Live Support"
+        navControl.navigationBar.topItem!.title = "Live Support";
         // Make all buttons with green text.
         let buttonAppearance = UIBarButtonItemAppearance()
-        buttonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.systemGreen]
+        buttonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor(rgb: 0xFFFFFF)]
         navigationItem.standardAppearance?.buttonAppearance = buttonAppearance
         navigationItem.compactAppearance?.buttonAppearance = buttonAppearance // For iPhone small navigation bar in landscape.
 
 
         // Make the done style button with yellow text.
-        let doneButtonAppearance = UIBarButtonItemAppearance()
-        doneButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.systemYellow]
-        navigationItem.standardAppearance?.doneButtonAppearance = doneButtonAppearance
-        navigationItem.compactAppearance?.doneButtonAppearance = doneButtonAppearance // For iPhone small navigation bar in landscape.
+        //let doneButtonAppearance = UIBarButtonItemAppearance()
+        //doneButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.systemYellow]
+        //navigationItem.standardAppearance?.doneButtonAppearance = doneButtonAppearance
+        //navigationItem.compactAppearance?.doneButtonAppearance = doneButtonAppearance // For iPhone small navigation bar in landscape.
 
-        let config = UIImage.SymbolConfiguration(pointSize: 25.0, weight: .medium, scale: .medium)
-        let image = UIImage(systemName: "chevron.left", withConfiguration: config)
+        let config = UIImage.SymbolConfiguration(pointSize: 14.0, weight: .medium, scale: .medium)
+        let image = UIImage(systemName: "chevron.left", withConfiguration: config)?.withTintColor(UIColor(rgb: 0xFFFFFF), renderingMode: .alwaysOriginal)
 
         // create back button
-        let backButton = UIButton(type: .custom)
-        backButton.addTarget(navControl, action: #selector(navControl.navigateBack), for: .touchUpInside)
-        backButton.setImage(image, for: .normal)
-        backButton.setTitle("Back", for: .normal)
-        backButton.setTitleColor(backButton.tintColor, for: .normal)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
-
-
+        // let backButton = UIButton(type: .custom)
+        // backButton.addTarget(navControl, action: #selector(navControl.navigateBack), for: .touchUpInside)
+        // backButton.setImage(image, for: .normal)
+        // backButton.setTitle(" Back", for: .normal)
+        // backButton.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
+        // backButton.setTitleColor(UIColor(rgb: 0xFFFFFF), for: .normal)
+        // navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        // navigationItem.rightBarButtonItem = nil
         rootViewController!.present(navControl, animated: true, completion: nil)
         //rootViewController!.present(chatVC, animated: true, completion: nil)
     
@@ -182,18 +239,11 @@ class MessagingController: NSObject, ObservableObject  {
     
     
     @objc
-    func resetConfig(for uuid:String) {
-        NSLog("HOWDY")
+    func resetConfig(_ url: String, orgID: String, devName: String, uuid: String, clientID: String) {
         print("Initializing config file.")
 
-        //         {
-        //   "OrganizationId": "00DD10000001YW6",
-        //   "DeveloperName": "Mobile",
-        //   "Url": "https://mintbet--pt.sandbox.my.salesforce-scrt.com"
-        // }
-
         // Get a URL for the service API path
-        guard let serviceAPIURL = URL(string: "https://mintbet--pt.sandbox.my.salesforce-scrt.com") else {
+        guard let serviceAPIURL = URL(string: url) else {
 
             // TO DO: Handle error
             return
@@ -222,8 +272,8 @@ class MessagingController: NSObject, ObservableObject  {
         let userVerificationRequired = false
         // Create a configuration object
         uiConfig = UIConfiguration(serviceAPI: serviceAPIURL,
-                                    organizationId: "00DD10000001YW6",
-                                    developerName: "Mobile",
+                                    organizationId: orgID,
+                                    developerName: devName,
                                     userVerificationRequired: userVerificationRequired,
                                     conversationId: conversationID)
         
@@ -233,6 +283,16 @@ class MessagingController: NSObject, ObservableObject  {
         // Handle pre-chat requests with a HiddenPreChatDelegate implementation.
         //CoreFactory.create(withConfig: config).setPreChatDelegate(delegate: self, queue: DispatchQueue.main)
         
+        // Create an instance of the hidden pre-chat delegate
+        let myPreChatDelegate = HiddenPrechatDelegateImplementation()
+        myPreChatDelegate.setClientID(clientID)
+
+        // Create a core client from a config
+        let coreClient = CoreFactory.create(withConfig: config)
+
+        // Assign the hidden pre-chat delegate
+        coreClient.preChatDelegate = myPreChatDelegate
+
         // Handle auto-response component requests with a TemplatedUrlDelegate implementation.
         //CoreFactory.create(withConfig: config).setTemplatedUrlDelegate(delegate: self, queue: DispatchQueue.main)
         

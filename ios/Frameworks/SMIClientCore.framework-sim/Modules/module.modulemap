@@ -1,0 +1,6 @@
+framework module SMIClientCore {
+  umbrella header "SMIClientCore.h"
+  export *
+
+  module * { export * }
+}
