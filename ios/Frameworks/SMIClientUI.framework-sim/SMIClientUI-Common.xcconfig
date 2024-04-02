@@ -1,4 +1,0 @@
-MARKETING_VERSION=1.5.1
-CURRENT_PROJECT_VERSION=1.5.1
-OTHER_LDFLAGS=-Wl,-rpath,/usr/lib/swift -weak-lswiftPhotosUI -weak-lswiftUniformTypeIdentifiers -weak-lswiftCore -weak-lswiftUIKit -weak_framework PhotosUI -weak_framework SwiftUI -weak_framework Combine -weak_framework LinkPresentation -weak_framework UIKit
-

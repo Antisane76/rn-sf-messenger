@@ -1,8 +1,8 @@
 // RnSfMessenger.m
 
 #import "RnSfMessenger.h"
-@import SMIClientCore;
-@import SMIClientUI;
+
+//RCT_EXTERN_MODULE(MessagingController, NSObject, ObservableObject)
 
 @implementation RnSfMessenger
 
@@ -11,17 +11,21 @@ RCT_EXPORT_MODULE(RnSfMessenger)
 RCT_EXPORT_METHOD(registerDeviceToken:(NSString *)token)
 {
   // Call the Messaging for In-App SDK with token info
-  [SMICoreFactory provideDeviceToken:token];
+  DeviceTokenPassthrough *dvtp = [DeviceTokenPassthrough alloc]; 
+  [dvtp provideDeviceToken: token];
+  //[SMICoreFactory provideDeviceToken:token];
 }
 
 RCT_EXPORT_METHOD(initiateChat:(NSString *)url :(NSString *)orgID :(NSString *)devName :(NSString *)uuid :(NSString *)clientID)
 {
-     dispatch_async(dispatch_get_main_queue(), ^{
-      MessagingController *controller = [[MessagingController alloc] init];
+     //dispatch_async(dispatch_get_main_queue(), ^{
+      MessagingContainer *container = [MessagingContainer alloc];
       //NSLog(@"Values: %s %s %s %s %s", url, orgID, devName, uuid, clientID);
       NSLog(@"Here!");
-      [controller resetConfig: url orgID:orgID devName:devName uuid:uuid clientID:clientID];
-      [controller showScreen];
+      [container init];
+      [container resetConfig: url orgID:orgID devName:devName uuid:uuid clientID:clientID];
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [container showScreen];
      });
     // TODO: Implement some actually useful functionality
     //callback(@[[NSString stringWithFormat: @"numberArgument: %@ stringArgument: %@", numberArgument, stringArgument]]);

@@ -24,7 +24,9 @@ Pod::Spec.new do |s|
   #s.requires_arc = true
 
   s.dependency "React"
-  s.ios.vendored_frameworks = '**/ios/Frameworks/SMIClientUI.framework', '**/ios/Frameworks/SMIClientCore.framework' 
+  s.dependency "Messaging-InApp-UI"
+  s.dependency "Messaging-InApp-Core"
+  #s.ios.vendored_frameworks = '**/ios/Frameworks/SMIClientUI.framework', '**/ios/Frameworks/SMIClientCore.framework' 
   # ...
   # s.dependency "..."
 end

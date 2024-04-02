@@ -39,6 +39,7 @@ public class AppViewModel(application: Application) : AndroidViewModel(applicati
     private val logger = Logger.getLogger(TAG)
     var conversationId = UUID.randomUUID()
     var uiConfig: UIConfiguration? = null
+    var chatClientID = "Guest"
 
     public fun GetUIClient(): UIClient {
         var uiClient: UIClient? = null
@@ -61,7 +62,7 @@ public class AppViewModel(application: Application) : AndroidViewModel(applicati
      fun resetMessagingConfig(url: String, orgID: String, devName: String, uuid: String, clientID: String) {
 
         logger.log(Level.INFO, "Initializing config file.")
-
+        chatClientID = clientID
         // TO DO Set this value to true if using a userVerificationProvider, otherwise false
         val isUserVerificationEnabled = false
 
@@ -82,66 +83,49 @@ public class AppViewModel(application: Application) : AndroidViewModel(applicati
         // to continue this conversation across app restarts or
         // across devices!)
         var conversationID = UUID.randomUUID()
-        if (uuid != "") {
-            conversationID = UUID.fromString(uuid);
-        }
-
-        // Create a UI configuration object
-        uiConfig = UIConfiguration(coreConfig, conversationID).also {
-            setupMessaging(it, clientID)
-        }
+        //if (uuid != "") {
+        //    conversationID = UUID.fromString(uuid);
+        //}
 
         // Create a new conversation
         // This code uses a random UUID for the conversation ID, but
         // be sure to use the same ID to persist the same conversation.
 
-        // uiConfig = UIConfiguration(coreConfig, conversationId).also {
-        //     // Optionally log events
-        //    setupMessaging(it)
-        // }
+        uiConfig = UIConfiguration(coreConfig, conversationId).also {
+            // Optionally log events
+           setupMessaging(it)
+        }
 
         logger.log(Level.INFO, "Config created using conversation ID $conversationId")
     }
 
     // Registers the hidden pre-chat provider. For your implementation you would need to set the
     // expected hidden pre-chat values from your org configuration to values from your application.
-    private fun registerHiddenPreChatValuesProvider(config: UIConfiguration, clientID: String) {
-        logger.log(Level.INFO, "CHRIST ALMIGHTY $clientID")
+    private fun registerHiddenPreChatValuesProvider(config: UIConfiguration) {
         coreClient(config).registerHiddenPreChatValuesProvider(object : PreChatValuesProvider {
 
             // Invoked automatically when hidden pre-chat fields are being sent
             override suspend fun setValues(input: List<PreChatField>): List<PreChatField> {
-                // Iterate through all the pre-chat fields
-                logger.log(Level.INFO, "INPUT!")
-                input.forEach {
-                    val name = it.name
-                    logger.log(Level.INFO, "HELLO $name")
-                    // Specify the value for each field mapping
-                    //if (it.name == "Client_ID") {
-                        it.userInput = clientID
-                    //}
+                return input.onEach {
+                    when (it.name) {
+                        "Client_ID" -> it.userInput = chatClientID
+                        "<YOUR_HIDDEN_FIELD1>" -> it.userInput = "<YOUR_HIDDEN_VALUE1>"
+                        "<YOUR_HIDDEN_FIELD2>" -> it.userInput = "<YOUR_HIDDEN_VALUE2>"
+                    }
                 }
-
-                // Return the same list, but with updated values set
-                return input
-                // return input.onEach {
-                //     when (it.name) {
-                //         "Client_ID" -> it.userInput = clientID
-                //     }
-                // }
             }
         })
     }
 
-    private fun setupMessaging(config: UIConfiguration, clientID: String) {
+    private fun setupMessaging(config: UIConfiguration) {
         CoreClient.setLogLevel(Level.ALL)
         
         logEvents(config)
-        registerHiddenPreChatValuesProvider(config, clientID)
-        //registerTemplatedUrlValuesProvider(config)
+        registerHiddenPreChatValuesProvider(config)
+        registerTemplatedUrlValuesProvider(config)
 
         // Note: this will only be used if you also set the isUserVerification flag to true in your CoreConfig object.
-        //registerUserVerificationProvider(config)
+        registerUserVerificationProvider(config)
     }
 
     // This registers the templated url parameters you have configured in your setup to values in

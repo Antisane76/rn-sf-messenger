@@ -24,7 +24,8 @@
 #pragma clang diagnostic ignored "-Wauto-import"
 #if defined(__OBJC__)
 #include <Foundation/Foundation.h> 
-#include "Frameworks/SMIClientUI.framework/Headers/SMIClientUI-Swift.h"
+//#include "Frameworks/SMIClientCore.framework/Headers/SMIHiddenPreChatDelegate.h"
+//#include "Frameworks/SMIClientUI.framework/Headers/SMIClientUI-Swift.h"
 #endif
 #if defined(__cplusplus)
 #include <cstdint>
@@ -298,11 +299,17 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #if defined(__OBJC__)
 
-SWIFT_CLASS("MessagingController")
-@interface MessagingController : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+SWIFT_CLASS("MessagingContainer")
+@interface MessagingContainer : NSObject
+//- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+- ()init;
 - ()resetConfig: (NSString *)url orgID:(NSString*)orgID devName:(NSString*)devName uuid:(NSString *)uuid clientID:(NSString *)clientID;
 - ()showScreen;
+@end
+
+SWIFT_CLASS("DeviceTokenPassthrough")
+@interface DeviceTokenPassthrough : NSObject
+- ()provideDeviceToken: (NSString *)token;
 @end
 
 #endif
