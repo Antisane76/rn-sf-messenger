@@ -17,11 +17,14 @@ Pod::Spec.new do |s|
   # optional - use expanded license entry instead:
   # s.license    = { :type => "MIT", :file => "LICENSE" }
   s.authors      = { "Tim Gurnett" => "timg@punterstech.com" }
-  s.platforms    = { :ios => "14.1" }
+  s.platforms    = { :ios => "15.0" }
   s.source       = { :git => "https://github.com/Antisane76/rn-sf-messenger.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,c,cc,cpp,m,mm,swift}"
   #s.requires_arc = true
+
+  s.resources = ['ios/en.lproj/Localizable.strings']
+  #s.ios.resource_bundle = { 'rn-sf-messenger' => 'ios/*.xcassets' }
 
   s.dependency "React"
   s.dependency "Messaging-InApp-UI"

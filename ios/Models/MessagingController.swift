@@ -80,9 +80,9 @@ class MessagingController: NSObject, ObservableObject {
         // be sure to use the same ID if you want to continue the
         // same conversation after a restart.
         var conversationID = UUID()
-        // if uuid != "" {
-        //     conversationID = UUID(uuidString:uuid as String)!
-        // }
+        if uuid != "" {
+            conversationID = UUID(uuidString:uuid as String)!
+        }
         
         // TO DO: Change the userVerificationRequired flag match the verification
         //        requirements of the endpoint.

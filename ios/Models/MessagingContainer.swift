@@ -38,17 +38,7 @@ class MessagingContainer: NSObject  {
     func showScreen() {
         let swiftUIView = ContentView(controller: controller)
 
-        let navigationItem = swiftUIView.navigationItem
         
-        // Make the navigation bar's title with red text.
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(rgb: 0x004E43)
-        appearance.titleTextAttributes = [.foregroundColor: UIColor(rgb: 0xFFFFFF)] // With a red background, make the title more readable.
-        navigationItem.standardAppearance = appearance
-        navigationItem.scrollEdgeAppearance = appearance
-        navigationItem.compactAppearance = appearance // For iPhone small navigation bar in landscape.
-
         let hostingViewController =  UIHostingController(rootView: swiftUIView)
         let scene = UIApplication.shared.connectedScenes
             .first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene
@@ -56,6 +46,18 @@ class MessagingContainer: NSObject  {
         let rootViewController = scene?
             .windows.first(where: { $0.isKeyWindow })?
             .rootViewController
+
+        // let navigationItem = swiftUIView.navigationView.navigationBar.navigationItem
+        
+        // // Make the navigation bar's title with red text.
+        // let appearance = UINavigationBarAppearance()
+        // appearance.configureWithOpaqueBackground()
+        // appearance.backgroundColor = UIColor(rgb: 0x004E43)
+        // appearance.titleTextAttributes = [.foregroundColor: UIColor(rgb: 0xFFFFFF)] // With a red background, make the title more readable.
+        // navigationItem.standardAppearance = appearance
+        // navigationItem.scrollEdgeAppearance = appearance
+        // navigationItem.compactAppearance = appearance // For iPhone small navigation bar in landscape.
+
         rootViewController!.present(hostingViewController, animated: true, completion: nil)
         //controller.showScreen()
     }
