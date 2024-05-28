@@ -78,14 +78,18 @@ public class AppViewModel(application: Application) : AndroidViewModel(applicati
         // Create a Core configuration object
         val coreConfig = CoreConfiguration(urlAddress, orgID, devName)
 
+        if (uuid != "") {
+            conversationId = UUID.fromString(uuid);
+        }
         // Generate a random conversation ID
         // (But be sure to use the SAME conversation ID if you want
         // to continue this conversation across app restarts or
         // across devices!)
-        var conversationID = UUID.randomUUID()
-        //if (uuid != "") {
+        // var conversationID = UUID.randomUUID()
+        // logger.log(Level.INFO, "Incoming uuid: $uuid")
+        // if (uuid != "") {
         //    conversationID = UUID.fromString(uuid);
-        //}
+        // }
 
         // Create a new conversation
         // This code uses a random UUID for the conversation ID, but

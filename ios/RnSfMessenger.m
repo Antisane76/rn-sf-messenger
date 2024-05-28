@@ -21,7 +21,6 @@ RCT_EXPORT_METHOD(initiateChat:(NSString *)url :(NSString *)orgID :(NSString *)d
      //dispatch_async(dispatch_get_main_queue(), ^{
       MessagingContainer *container = [MessagingContainer alloc];
       //NSLog(@"Values: %s %s %s %s %s", url, orgID, devName, uuid, clientID);
-      NSLog(@"Here!");
       [container init];
       [container resetConfig: url orgID:orgID devName:devName uuid:uuid clientID:clientID];
       dispatch_async(dispatch_get_main_queue(), ^{

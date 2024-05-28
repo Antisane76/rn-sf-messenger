@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color> -->
 
     <!-- This color is an example that overrides the chat input background -->
-    <!-- <color name="smi_input_background">#FFFF00</color> -->
+    <color name="smi_input_background">#FFFFFF</color>
     <color name="smi_navigation_background">#004E43</color>
     <color name="smi_navigation_icon">#FFFFFF</color>
     <color name="smi_navigation_text">#FFFFFF</color>
