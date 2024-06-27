@@ -12,11 +12,11 @@
 
 // These defaults should reflect the SDK versions used by
 // the minimum React Native version supported.
-def DEFAULT_COMPILE_SDK_VERSION = 28
+def DEFAULT_COMPILE_SDK_VERSION = 34
 def DEFAULT_BUILD_TOOLS_VERSION = '28.0.3'
-def DEFAULT_MIN_SDK_VERSION = 16
-def DEFAULT_TARGET_SDK_VERSION = 28
-def DEFAULT_KOTLIN_VERSION = '1.8.10'
+def DEFAULT_MIN_SDK_VERSION = 23
+def DEFAULT_TARGET_SDK_VERSION = 34
+def DEFAULT_KOTLIN_VERSION = '1.9.23'
 
 def safeExtGet(prop, fallback) {
     rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
@@ -46,7 +46,7 @@ buildscript {
         mavenCentral()
     }
     ext {
-        kotlinVersion = findProperty('android.kotlinVersion') ?: '1.8.10'
+        kotlinVersion = findProperty('android.kotlinVersion') ?: '1.9.23'
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${project.ext.kotlinVersion}"
@@ -92,15 +92,15 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'  // From node_modules
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${project.ext.kotlinVersion}"
-    implementation "com.salesforce.service:messaging-inapp-ui:1.6.0"
-    implementation 'com.salesforce.service:messaging-inapp-core:1.6.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.3.0'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
+    implementation "com.salesforce.service:messaging-inapp-ui:1.6.1"
+    implementation 'com.salesforce.service:messaging-inapp-core:1.6.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.2'
+    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.7'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.7.7'
 }
 
 def configureReactNativePom(def pom) {
