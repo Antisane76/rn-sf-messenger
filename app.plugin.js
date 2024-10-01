@@ -1,1 +1,1 @@
-module.exports = require("./plugin/build/withSalesforceColors");
+module.exports = require("./plugin/bld/withSalesforceColors");
