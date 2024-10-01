@@ -10,7 +10,7 @@ const pkg = {
     version: "UNVERSIONED",
 };
 var fs = require('fs');
-const withSalesforceColors = (config, { backgroundColor, buttonColor } = {}) => {
+const withSalesforceColors = (config, { backgroundColor, buttonColor, useGradient } = {}) => {
     //const { backgroundColor, buttonColor } = <ConfigPlugin>props;
     // Add android plugin
     if (backgroundColor && buttonColor) {
@@ -86,6 +86,10 @@ const withSalesforceColors = (config, { backgroundColor, buttonColor } = {}) => 
             if (curruiColorAccentButtonColor.localeCompare(buttonColor) != 0) {
                 data = data.substring(0, uiColorAccentButtonIndex) + buttonColor + data.substring(uiColorAccentButtonIndex + buttonColor.length);
             }
+            if (!useGradient) {
+                data = data.replaceAll('Image("mintbetTicket").resizable().opacity(0.3)', 'Image("mintbetTicket").resizable().opacity(1.0)');
+                data = data.replaceAll('.background(backgroundGradient)', '');
+            }
             fs.writeFile(__dirname + '/../../ios/Views/ContentView.swift', data, 'utf8', function (err) {
                 if (err)
                     return console.log(err);
@@ -134,6 +138,10 @@ const withSalesforceColors = (config, { backgroundColor, buttonColor } = {}) => 
             var curruiColorTintColor2 = data.substring(uiColorTintIndex2, uiColorTintIndex2 + 6);
             if (curruiColorTintColor2.localeCompare(backgroundColor) != 0) {
                 data = data.substring(0, uiColorTintIndex2) + backgroundColor + data.substring(uiColorTintIndex2 + backgroundColor.length);
+            }
+            if (!useGradient) {
+                data = data.replaceAll('Image("mintbetTicket").resizable().opacity(0.3)', 'Image("mintbetTicket").resizable().opacity(1.0)');
+                data = data.replaceAll('.background(backgroundGradient)', '');
             }
             fs.writeFile(__dirname + '/../../ios/Views/ContentView.swift', data, 'utf8', function (err) {
                 if (err)

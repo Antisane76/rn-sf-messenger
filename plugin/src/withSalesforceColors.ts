@@ -12,7 +12,7 @@ const pkg = {
 var fs = require('fs')
 
 
-const withSalesforceColors: ConfigPlugin<{ backgroundColor?: string | false, buttonColor?: string | false }> = (config, {backgroundColor, buttonColor} = {}) => {
+const withSalesforceColors: ConfigPlugin<{ backgroundColor?: string | false, buttonColor?: string | false, useGradient?: boolean | false }> = (config, {backgroundColor, buttonColor, useGradient} = {}) => {
     //const { backgroundColor, buttonColor } = <ConfigPlugin>props;
   
     // Add android plugin
@@ -99,6 +99,11 @@ const withSalesforceColors: ConfigPlugin<{ backgroundColor?: string | false, but
                 data = data.substring(0, uiColorAccentButtonIndex)  + buttonColor + data.substring(uiColorAccentButtonIndex+buttonColor.length)
             }
 
+            if (!useGradient) {
+                data = data.replaceAll('Image("mintbetTicket").resizable().opacity(0.3)','Image("mintbetTicket").resizable().opacity(1.0)')
+                data = data.replaceAll('.background(backgroundGradient)', '')
+            }
+
             fs.writeFile(__dirname+'/../../ios/Views/ContentView.swift', data, 'utf8', function (err: string) {
                 if (err) return console.log(err);
             });
@@ -148,6 +153,11 @@ const withSalesforceColors: ConfigPlugin<{ backgroundColor?: string | false, but
                 var curruiColorTintColor2: string = data.substring(uiColorTintIndex2,uiColorTintIndex2+6)
                 if (curruiColorTintColor2.localeCompare(backgroundColor) != 0) {
                     data = data.substring(0, uiColorTintIndex2)  + backgroundColor + data.substring(uiColorTintIndex2+backgroundColor.length)
+                }
+
+                if (!useGradient) {
+                    data = data.replaceAll('Image("mintbetTicket").resizable().opacity(0.3)','Image("mintbetTicket").resizable().opacity(1.0)')
+                    data = data.replaceAll('.background(backgroundGradient)', '')
                 }
     
                 fs.writeFile(__dirname+'/../../ios/Views/ContentView.swift', data, 'utf8', function (err: string) {
