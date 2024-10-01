@@ -42,7 +42,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Image("mintbetTicket").resizable().opacity(1.0)
+                Image("mintbetTicket").resizable().opacity(0.3)
                 VStack (alignment: .center) {
                     
                     Text("Support").font(.largeTitle).font(Font.body.bold())
