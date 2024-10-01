@@ -31,10 +31,12 @@
   "readmeFilename": "README.md",
   "peerDependencies": {
     "react": "18.2.0",
-    "react-native": "0.73.6"
+    "react-native": "0.73.6",
+    "expo": "*"
   },
   "devDependencies": {
     "react": "18.2.0",
-    "react-native": "0.73.6"
+    "react-native": "0.73.6",
+    "expo-module-scripts": "^3.0.0"
   }
 }
