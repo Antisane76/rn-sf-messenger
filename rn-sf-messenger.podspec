@@ -27,8 +27,8 @@ Pod::Spec.new do |s|
   #s.ios.resource_bundle = { 'rn-sf-messenger' => 'ios/*.xcassets' }
 
   s.dependency "React"
-  s.dependency "Messaging-InApp-UI"
-  s.dependency "Messaging-InApp-Core"
+  s.dependency 'Messaging-InApp-UI', '~> 1.6.3'
+  s.dependency 'Messaging-InApp-Core', '~> 1.6.3'
   #s.ios.vendored_frameworks = '**/ios/Frameworks/SMIClientUI.framework', '**/ios/Frameworks/SMIClientCore.framework' 
   # ...
   # s.dependency "..."
