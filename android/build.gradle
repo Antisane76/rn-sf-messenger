@@ -92,8 +92,8 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation 'com.facebook.react:react-native:+'  // From node_modules
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${project.ext.kotlinVersion}"
-    implementation "com.salesforce.service:messaging-inapp-ui:1.6.2"
-    implementation 'com.salesforce.service:messaging-inapp-core:1.6.2'
+    implementation "com.salesforce.service:messaging-inapp-ui:1.7.0"
+    implementation 'com.salesforce.service:messaging-inapp-core:1.7.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.2'
     implementation 'androidx.core:core-ktx:1.13.1'
     implementation 'androidx.appcompat:appcompat:1.7.0'
@@ -101,6 +101,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.7.7'
     implementation 'androidx.navigation:navigation-ui-ktx:2.7.7'
+    implementation 'androidx.paging:paging-runtime-ktx:3.3.0'
 }
 
 def configureReactNativePom(def pom) {
